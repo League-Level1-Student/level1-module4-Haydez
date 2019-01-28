@@ -90,7 +90,7 @@ public class SimonSays extends KeyAdapter {
 		Random random = new Random();
 		// 13. Use the Random and the speak method to either say 
 		// "Simon says press this key" or "Press this key"
-		random.
+
 		// 14. Above, set the value of simonSays to true/false appropriately
 
 		
