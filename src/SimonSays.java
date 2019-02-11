@@ -29,9 +29,9 @@ public class SimonSays extends KeyAdapter {
 	private boolean simonSays = false;
 	Date timeAtStart;
 
-	private void makeAlbum() {
+	void makeAlbum() {
 		// 2. Add the four images that match keyboard keys like this: 
-		images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
+		images.put(KeyEvent.VK_UP, "up.jpg");
 		images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
 		images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
 		images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
@@ -43,16 +43,27 @@ public class SimonSays extends KeyAdapter {
 	}
 
 	public void keyPressed(KeyEvent e) {
+		int keyCode = e.getKeyCode();
 		// 15. Make a points variable to track the score.
-
+		int points = 0;
+		int tries = 0;
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-		
+		if(keyCode == imageIndex && simonSays == true) {
+			points = points + 1;
+			speak("+1");
+		}
 			// 17. Increase the value of score
-		
+			
 			// 18. Use the speak method to tell the user they were correct
 		
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't say..."
-		
+		if(keyCode != imageIndex && simonSays != false) {
+			points = points +1;
+			speak("+1");
+		} else {
+			speak("oof");
+			tries = tries + 1;
+		}
 			// 20.  Increase the value of score
 		
 			// 21. Use the speak method to tell the user they were correct
@@ -60,7 +71,10 @@ public class SimonSays extends KeyAdapter {
 		// 22. Increment tries by 1
 		
 		// 25. If tries is greater than 9 (or however many you want)...
-		
+		if(tries > 9 ) {
+			speak("your score is " + points);
+			System.exit(0);
+		}
 			// 26. Tell the user their score
 		
 			// 27. Exit the program
@@ -93,9 +107,11 @@ public class SimonSays extends KeyAdapter {
 		simonSays = random.nextBoolean();
 		if(simonSays) {
 			speak("Simon says press this key");
+		} else {
+			speak("press this key");
 		}
 		// 14. Above, set the value of simonSays to true/false appropriately
-
+		
 		
 	}
 
@@ -134,3 +150,13 @@ public class SimonSays extends KeyAdapter {
  * System.out.println((timeAtEnd.getTime()-timeAtStart.getTime())/1000);
  * System.exit(0);
  */
+
+
+
+
+
+
+
+
+
+
