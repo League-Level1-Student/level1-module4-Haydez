@@ -6,8 +6,8 @@ import javax.swing.*;
 public class PigLatinTranslator implements ActionListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
-	JTextField x = new JTextField();
-	JTextField y = new JTextField();
+	JTextField x = new JTextField(20);
+	JTextField y = new JTextField(20);
 	JButton translate = new JButton();
 	PigLatinTranslatorTool tool = new PigLatinTranslatorTool();
 	public void makeGUI() {
@@ -16,8 +16,6 @@ public class PigLatinTranslator implements ActionListener {
 		panel.add(x);
 		panel.add(translate);
 		panel.add(y);
-		x.setText("          ");
-		y.setText("          ");
 		translate.setText("translate");
 		frame.pack();
 		translate.addActionListener(this);
@@ -26,8 +24,8 @@ public class PigLatinTranslator implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		String words = "helo";
-		System.out.println(tool.translate(words));
+		String words = x.getText();
+		y.setText(tool.translate(words));
 	}
 
 	
